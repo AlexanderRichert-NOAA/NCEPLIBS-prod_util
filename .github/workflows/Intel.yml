@@ -32,6 +32,7 @@ jobs:
         bacio-version: v2.6.0
         w3emc-version: v2.10.0
         w3emc-cmake-args: -DBUILD_WITH_BUFR=OFF
+        key-prefix: Intel-
 
     - name: checkout-prod_util
       uses: actions/checkout@v4
