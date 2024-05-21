@@ -53,7 +53,5 @@ jobs:
       with:
         name: prod_util-test-coverage
         path: |
-          prod_util/*.html
-          prod_util/*.css
-
-        
+          prod_util/build/*.html
+          prod_util/build/*.css
