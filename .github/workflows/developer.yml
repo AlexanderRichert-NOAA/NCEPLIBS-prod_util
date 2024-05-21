@@ -42,9 +42,7 @@ jobs:
         cmake -S prod_util -B prod_util/build -DCMAKE_PREFIX_PATH="$GITHUB_WORKSPACE/nceplibs/NCEPLIBS-bacio;$GITHUB_WORKSPACE/nceplibs/NCEPLIBS-w3emc" -DCMAKE_Fortran_FLAGS="-g -fprofile-abs-path -fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_C_FLAGS="-g -fprofile-abs-path -fprofile-arcs -ftest-coverage -O0 -Wall" -DCMAKE_INSTALL_PREFIX=~/prod_util/install -DENABLE_DOCS=ON
         cmake --build prod_util/build --parallel 2 --verbose
         ctest --test-dir prod_util/build --output-on-failure --verbose
-        cd prod_util/build
-        gcovr --root .. -v --html-details --exclude ../tests --exclude CMakeFiles --print-summary -o test-coverage.html &> /dev/null
-        cd ../..
+        gcovr --root prod_util -v --html-details --exclude prod_util/tests --exclude prod_util/build/CMakeFiles --print-summary -o test-coverage.html &> /dev/null
         cmake --install prod_util/build
         ls -l ~/prod_util/install/bin/fsync_file || exit 1
 
@@ -53,5 +51,7 @@ jobs:
       with:
         name: prod_util-test-coverage
         path: |
-          prod_util/build/*.html
-          prod_util/build/*.css
+          *.html
+          *.css
+
+        
