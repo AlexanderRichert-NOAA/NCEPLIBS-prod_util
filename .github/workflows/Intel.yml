@@ -21,6 +21,11 @@ jobs:
 
     steps:
 
+    - name: "Install Intel"
+      uses: NOAA-EMC/ci-install-intel-toolkit@develop
+      with:
+        compiler-setup: ${{ matrix.compilers }}
+
     - name: "Build dependencies"
       uses: NOAA-EMC/ci-build-nceplibs@develop
       with:
